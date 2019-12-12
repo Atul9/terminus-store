@@ -124,7 +124,7 @@ impl Layer for SyncStoreLayer {
         self.inner.name()
     }
 
-    fn parent(&self) -> Option<Arc<dyn Layer>> {
+    fn parent(&self) -> Option<&dyn Layer> {
         (&self.inner as &dyn Layer).parent()
     }
 

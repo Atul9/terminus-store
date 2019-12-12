@@ -13,7 +13,7 @@ pub trait Layer: Send+Sync {
     fn name(&self) -> [u32;5];
 
     /// The parent of this layer, or None if this is a base layer.
-    fn parent(&self) -> Option<Arc<dyn Layer>>;
+    fn parent(&self) -> Option<&dyn Layer>;
 
     /// The amount of nodes and values known to this layer.
     /// This also counts entries in the parent.

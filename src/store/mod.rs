@@ -138,7 +138,7 @@ impl StoreLayer {
         let parent = self.layer.parent();
 
         parent.map(|p| StoreLayer {
-            layer: p,
+            layer: Arc::new(p.clone()),
             store: self.store.clone()
         })
     }
@@ -149,7 +149,7 @@ impl Layer for StoreLayer {
         self.layer.name()
     }
 
-    fn parent(&self) -> Option<Arc<dyn Layer>> {
+    fn parent(&self) -> Option<&dyn Layer> {
         self.layer.parent()
     }
 
